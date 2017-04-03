@@ -11,10 +11,12 @@ public class Projectile : MonoBehaviour
 	private float _speed;
 	
 	private Rigidbody _rigidbody;
+	private float _despawnTime = 2f;
 
 	void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody> ();
+		Destroy (gameObject, _despawnTime);
 	}
 
 	void FixedUpdate()
