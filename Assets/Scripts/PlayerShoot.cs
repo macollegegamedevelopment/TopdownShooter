@@ -7,8 +7,28 @@ using UnityEngine;
 /// </summary>
 public class PlayerShoot : MonoBehaviour 
 {
+	[SerializeField]
+	private GameObject _projectile;
+
+	[SerializeField]
+	private Transform spawnpoint;
+
+	[SerializeField]
+	private float _fireRate;
+
+	private float _nextFireTime;
+
 	public void Shoot()
 	{
-		print ("Shoot");	
+		if (Time.time >= _nextFireTime) 
+		{
+			SpawnProjectile ();
+		}
+	}
+
+	private void SpawnProjectile()
+	{
+		Instantiate (_projectile, spawnpoint.position, spawnpoint.rotation);
+		_nextFireTime = Time.time + _fireRate;
 	}
 }
