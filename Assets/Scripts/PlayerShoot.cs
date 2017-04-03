@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Spawns bullets
+/// Spawns bullets and checks if projectiles can be shot.
 /// </summary>
 public class PlayerShoot : MonoBehaviour 
 {
