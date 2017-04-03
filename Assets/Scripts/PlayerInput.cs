@@ -9,10 +9,12 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour 
 {
 	private PlayerMovement _playerMovement;
+	private PlayerShoot _playerShoot;
 
 	void Awake()
 	{
 		_playerMovement = GetComponent<PlayerMovement> ();
+		_playerShoot = GetComponent<PlayerShoot> ();
 	}
 
 	void Update()
@@ -27,6 +29,11 @@ public class PlayerInput : MonoBehaviour
 		if (Physics.Raycast (ray, out hit)) 
 		{
 			_playerMovement.LookAt (hit.point);	
+		}
+
+		if (Input.GetMouseButton (0)) 
+		{
+			_playerShoot.Shoot ();
 		}
 	}
 }
