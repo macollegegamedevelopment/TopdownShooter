@@ -11,7 +11,7 @@ public class PlayerShoot : MonoBehaviour
 	private GameObject _projectile;
 
 	[SerializeField]
-	private Transform spawnpoint;
+	private Transform _spawnpoint;
 
 	[SerializeField]
 	private float _fireRate;
@@ -22,13 +22,8 @@ public class PlayerShoot : MonoBehaviour
 	{
 		if (Time.time >= _nextFireTime) 
 		{
-			SpawnProjectile ();
+			Instantiate (_projectile, _spawnpoint.position, _spawnpoint.rotation);
+			_nextFireTime = Time.time + _fireRate;
 		}
-	}
-
-	private void SpawnProjectile()
-	{
-		Instantiate (_projectile, spawnpoint.position, spawnpoint.rotation);
-		_nextFireTime = Time.time + _fireRate;
-	}
+	}	
 }
