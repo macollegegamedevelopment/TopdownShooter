@@ -13,8 +13,17 @@ public class PlayerShoot : MonoBehaviour
 	[SerializeField]
 	private Transform _muzzle;
 
+	[SerializeField]
+	private float _fireRate;
+
+	private float _nextFireTime;
+
 	public void Shoot()
 	{
-		Instantiate (_projectile, _muzzle.position, _muzzle.rotation);
+		if (Time.time >= _nextFireTime) 
+		{
+			Instantiate (_projectile, _muzzle.position, _muzzle.rotation);
+			_nextFireTime = Time.time + _fireRate;
+		}
 	}
 }
